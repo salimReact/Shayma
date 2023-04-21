@@ -1,6 +1,4 @@
 import React, { Fragment,useState } from 'react'
-import axios from 'axios';
-
 
 
 export default function CreateRondoGuide() {
@@ -58,18 +56,7 @@ export default function CreateRondoGuide() {
             <span className="details">Date</span>
             <input type="text" placeholder="Enter your Date"  name="Date"   required/>
           </div>
-          <div className="input-box">
-            <span className="details">Name</span>
-            <input type="text" placeholder="Enter your name" name="Fname"    required/>
-          </div>
-          <div className="input-box">
-            <span className="details">Desctiption</span>
-            <input type="text" placeholder="Enter your Desctiption"  name="Desctiption"   required/>
-          </div>
-          <div className="input-box">
-            <span className="details">Date</span>
-            <input type="text" placeholder="Enter your Date"  name="Date"   required/>
-          </div>
+  
         <div className='sort'>
             <div className='sort1'>
        <label className="checkbox">

@@ -5,15 +5,7 @@ import Login from './pages/login/Login'
 import CreateRondoAdmin from './pages/login/CreateRondoAdmin'
 import CreateRondoGuide from './pages/login/CreateRondoGuide'
 import CreateRondoUser from './pages/login/CreateRondoUser'
-import firebase from 'firebase/app';
-import 'firebase/database';
 
-const firebaseConfig = {
-};
-
-firebase.initializeApp(firebaseConfig);
-
-const database = firebase.database();
 
 function App() {
   return (
