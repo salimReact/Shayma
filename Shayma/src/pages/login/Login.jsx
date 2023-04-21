@@ -19,7 +19,7 @@ function Login() {
                 <input type="password" placeholder="Enter your password" required />
               </div>
               <div className="input-box">
-                <a href="/"><span className="details">Register Now</span></a>   
+                <a href="/CreateRondoAdmin"><span className="details">Register Now</span></a>   
               </div>
               <div className="input-box">
                 <a href="/"><span className="details">Forget Password?</span></a>   

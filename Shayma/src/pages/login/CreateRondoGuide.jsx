@@ -1,38 +1,48 @@
-import React, { Fragment,useState } from 'react'
-
+import React, { Fragment, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 export default function CreateRondoGuide() {
+  const [detail1, setdetail1] = useState('');
+  const [detail2, setdetail2] = useState('');
+  const [detail3, setdetail3] = useState('');
+  const [categories, setCategories] = useState({});
+  const [image, setImage] = useState(null);
+
+  const navigateTo = useNavigate();
+
+  function handleInputChange(event) {
+    const target = event.target;
+    const value = target.type === 'checkbox' ? target.checked : target.value;
+    const name = target.name;
+
+    setCategories((prevCategories) => {
+      return {
+        ...prevCategories,
+        [name]: value,
+      };
+    });
+  }
+
+  function handleImageChange(event) {
+    setImage(event.target.files[0]);
+  }
+
   function register(event) {
     event.preventDefault();
-    
-    const name = event.target.Fname.value;
-    const description = event.target.Desctiption.value;
-    const date = event.target.Date.value;
-    const categories = {
-      'Beauty': event.target.Beauty.checked,
-      'Gaming': event.target.Gaming.checked,
-      'High-tech': event.target['High-tech'].checked,
-      'App mobiles': event.target['App mobiles'].checked,
-      'Lifestyle': event.target.Lifestyle.checked,
-      'Parents-Kids': event.target['Parents-Kids'].checked,
-      'Travel': event.target.Travel.checked,
-      'Food': event.target.Food.checked,
-      'Animals': event.target.Animals.checked,
-      'Humour': event.target.Humour.checked
-    };
-    const imageUrl = image;
-  
-    database.ref('rondoGuide').push({
-      name,
-      description,
-      date,
+
+    const rondoData = {
+      detail3,
+      detail1,
+      detail2,
       categories,
-      imageUrl
-    }).then(() => {
-      console.log('Data added to Firebase Realtime Database');
-    }).catch(error => {
-      console.log(error);
-    });
+      image,
+    };
+
+    localStorage.setItem('rondoData', JSON.stringify(rondoData));
+
+    navigateTo('/')
+
+    alert('Rondo Editted!'); 
   }
 
   return (
@@ -44,75 +54,77 @@ export default function CreateRondoGuide() {
    <div className="title">Create Rondo Guide</div>
    <div className="content">
        <div className="user-details">
+         
           <div className="input-box">
-            <span className="details">Name</span>
-            <input type="text" placeholder="Enter your name" name="Fname"    required/>
+            <span className="details">detail1</span>
+            <input type="text" placeholder="Enter your detail1"  name="detail1"   required/>
           </div>
           <div className="input-box">
-            <span className="details">Desctiption</span>
-            <input type="text" placeholder="Enter your Desctiption"  name="Desctiption"   required/>
+            <span className="details">detail2</span>
+            <input type="text" placeholder="Enter your detail2"  name="detail2"   required/>
           </div>
           <div className="input-box">
-            <span className="details">Date</span>
-            <input type="text" placeholder="Enter your Date"  name="Date"   required/>
+            <span className="details">detail3</span>
+            <input type="text" placeholder="Enter your detail3" name="detail3"    required/>
           </div>
   
         <div className='sort'>
             <div className='sort1'>
        <label className="checkbox">
-       <input type="checkbox" name="Beauty" onChange={handleInputChange}/>
+       <input type="checkbox" name="option1" onChange={handleInputChange}/>
       <span className="checkmark"></span>
-      <span className="label-text">Beauty</span>
+      <span className="label-text">option1</span>
     </label>
     <label className="checkbox">
-       <input type="checkbox" name="Gaming" onChange={handleInputChange} />
+       <input type="checkbox" name="option2" onChange={handleInputChange} />
       <span className="checkmark"></span>
-      <span className="label-text">Gaming</span>
+      <span className="label-text">option2</span>
     </label>
     <label className="checkbox">
-       <input type="checkbox" name="High-tech" onChange={handleInputChange}/>
+       <input type="checkbox" name="option3" onChange={handleInputChange}/>
       <span className="checkmark"></span>
-      <span className="label-text">High-tech</span>
+      <span className="label-text">option3</span>
     </label>
     <label className="checkbox">
-       <input type="checkbox" name="App mobiles" onChange={handleInputChange}/>
+       <input type="checkbox" name="option4" onChange={handleInputChange}/>
       <span className="checkmark"></span>
-      <span className="label-text">App mobiles</span>
+      <span className="label-text">option4</span>
     </label>
     <label className="checkbox">
-       <input type="checkbox" name="Lifestyle" onChange={handleInputChange}/>
+       <input type="checkbox" name="option5" onChange={handleInputChange}/>
       <span className="checkmark"></span>
-      <span className="label-text">Lifestyle</span>
+      <span className="label-text">option5</span>
     </label>
     </div>
     <div className='sort2'><label className="checkbox">
-       <input type="checkbox" name="Parents-Kids" onChange={handleInputChange}/>
+       <input type="checkbox" name="option6" onChange={handleInputChange}/>
       <span className="checkmark"></span>
-      <span className="label-text">Parents / Kids</span>
+      <span className="label-text">option6</span>
     </label>
     <label className="checkbox">
-       <input type="checkbox" name="Travel" onChange={handleInputChange}/>
+       <input type="checkbox" name="option7" onChange={handleInputChange}/>
       <span className="checkmark"></span>
-      <span className="label-text">Travel</span>
+      <span className="label-text">option7</span>
     </label>
     <label className="checkbox">
-       <input type="checkbox" name="Food" onChange={handleInputChange}/>
+       <input type="checkbox" name="option8" onChange={handleInputChange}/>
       <span className="checkmark"></span>
-      <span className="label-text">Food</span>
+      <span className="label-text">option8</span>
     </label>
     <label className="checkbox">
-       <input type="checkbox" name="Animals" onChange={handleInputChange}/>
+       <input type="checkbox" name="option9" onChange={handleInputChange}/>
       <span className="checkmark"></span>
-      <span className="label-text">Animals</span>
+      <span className="label-text">option9</span>
     </label>
     <label className="checkbox">
-       <input type="checkbox" name="Humour" onChange={handleInputChange}/>
+       <input type="checkbox" name="option10" onChange={handleInputChange}/>
       <span className="checkmark"></span>
-      <span className="label-text">Humour</span>
+      <span className="label-text">option10</span>
     </label>
 
     </div>
     <div className='upload'> 
+    <span className="label-text">Image</span>
     <input type="file" name="image" onChange={handleImageChange} />
 </div>
     </div>
